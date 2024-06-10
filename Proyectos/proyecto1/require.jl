@@ -1,10 +1,4 @@
-using Pkg
-
-function check_and_add(package_name::String)
-    if !(package_name in keys(Pkg.installed()))
-        Pkg.add(package_name)
-    end
-end
+using pkg
 
 packages = [
     "SymPy",
@@ -16,5 +10,5 @@ packages = [
 ]
 
 for pkg in packages
-    check_and_add(pkg)
+    Pkg.add(pkg)
 end
