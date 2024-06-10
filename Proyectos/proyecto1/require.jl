@@ -1,4 +1,4 @@
-using pkg
+using Pkg
 
 packages = [
     "SymPy",
