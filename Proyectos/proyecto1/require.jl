@@ -6,7 +6,8 @@ packages = [
     "Plots",
     "CSV",
     "DataFrames",
-    "Statistics"
+    "Statistics",
+    "PyCall"
 ]
 
 for pkg in packages
