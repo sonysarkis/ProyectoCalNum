@@ -1,6 +1,6 @@
 import numpy as np  
 import matplotlib.pyplot as plt  
-from scipy.linalg import solve  # solve para resolver S.E. lineales
+from scipy.linalg import solve 
 
 
 # Datos de la muestra
@@ -43,7 +43,14 @@ coef_a, coef_b, coef_c, coef_d = coeficientes_trazCubic(x_data, y_data)
 
 # Función del trazador cúbico sujeto
 def evaluar_trazCubic(x, x_data, a, b, c, d):
-    # Encuentra el intervalo en el que está x
+    indice_intervalo = np.searchsorted(x_data, x) - 1  # Encuentra el intervalo en el que está x
+    indice_intervalo = np.clip(indice_intervalo, 0, len(a) - 1)  # Asegura que i esté dentro del rango válido
+    x_dist = x - x_data[indice_intervalo]  # Calcula la distancia desde x al punto de control más cercano
+    return a[indice_intervalo] + b[indice_intervalo] * x_dist + c[indice_intervalo] * x_dist ** 2 + d[indice_intervalo] * x_dist ** 3  # Calcula el valor interpolado usando los polinomios cúbicos
+    
+    # Si no queremos usar np.searchsorted ni np.clip
+    # sustituimos desde la linea 46 hasta la 49 por lo siguiente:
+    """# Encuentra el intervalo en el que está x
     indice_intervalo = 0
     for i in range(len(x_data) - 1):
         if x_data[i] <= x < x_data[i + 1]:
@@ -59,6 +66,7 @@ def evaluar_trazCubic(x, x_data, a, b, c, d):
     
     # valor interpolado usando los polinomios cúbicos
     return a[indice_intervalo] + b[indice_intervalo] * x_dist + c[indice_intervalo] * x_dist ** 2 + d[indice_intervalo] * x_dist ** 3
+    """
 
 # Gráfica de los puntos de control y el trazador cúbico sujeto
 plt.figure()
