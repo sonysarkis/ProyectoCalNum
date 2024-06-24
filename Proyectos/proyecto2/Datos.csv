@@ -1,0 +1,22 @@
+# Datos para el Método de Trazador Cúbico Sujeto
+x_cubico,y_cubico
+0,0.5
+1,0.8
+2,1.0
+3,0.9
+4,1.2
+5,0.7
+
+# Datos para el Polinomio de Mínimos Cuadrados
+x,y
+0,1.1
+1,3.5
+2,2.8
+3,4.2
+4,5.0
+
+# Datos para la Resolución de Ecuaciones Lineales
+A1,A2,A3,b
+1,2,1,4
+2,-1,1,1
+3,1,-1,-2
